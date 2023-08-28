@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      AWS_DEFAULT_REGION: us-east-1
-      AWS_REGION: us-east-1
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_INSTANCE_SG_ID: ${{ secrets.AWS_INSTANCE_SG_ID }}
+      AWS_DEFAULT_REGION: us-east-2
+      AWS_REGION: us-east-2
+      #AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #AWS_INSTANCE_SG_ID: ${{ secrets.AWS_INSTANCE_SG_ID }}
       EC2_SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
 
     steps:
@@ -49,7 +49,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
 
           # Give execute permissions to the deployment script
-          cd /home/ubuntu/frozen-desserts && chmod +x deploy_script.sh
+          chmod +x deploy_script.sh
 
           # Run deployment script
           ./deploy_script.sh'
